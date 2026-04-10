@@ -7,5 +7,5 @@ data class Usuarios(
     val Correo: String,
     val carrera: String,
     val gustos: String,
-//    val materias: List<>
+    val materias: List<Materias>
 )

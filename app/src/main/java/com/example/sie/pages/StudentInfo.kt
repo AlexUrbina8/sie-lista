@@ -43,6 +43,33 @@ fun StudentInfoView (navegar: NavHostController, listaAlumnos: List<Usuarios>,id
                             Text("Alumno no encontrado")
                         }
                     }
+                    items(alu.materias) { materia ->
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 6.dp),
+                            elevation = CardDefaults.cardElevation(2.dp)
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                Text(text = materia.nombre, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text(text = "Calificación: ${materia.calificaciones}", fontSize = 14.sp)
+                                    Text(text = "Faltas: ${materia.faltas}", color = if(materia.faltas > 3) Color.Red else Color.Gray)
+                                }
+
+                                Text(
+                                    text = "Promedio acumulado: ${materia.promedio}",
+                                    fontSize = 12.sp,
+                                    color = Color.DarkGray,
+                                    modifier = Modifier.padding(top = 4.dp)
+                                )
+                            }
+                        }
+                    }
                 }
             }
 

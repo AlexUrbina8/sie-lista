@@ -41,7 +41,12 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "luis.urbina@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola"
+            gustos= "Hola",
+            materias = listOf(
+                Materias("Programación Móvil", 9.5, 9.2, 2),
+                Materias("Bases de Datos", 8.0, 8.5, 0),
+                Materias("Cálculo Integral", 10.0, 9.8, 1)
+                )
             )
         )
 
@@ -51,7 +56,13 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "juan.seidller@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola"
+            gustos= "Hola",
+            materias = listOf(
+                Materias("Programación Móvil", 9.5, 9.2, 2),
+                Materias("Bases de Datos", 8.0, 8.5, 0),
+                Materias("Cálculo Integral", 10.0, 9.8, 1)
+            )
+
             )
         )
 
@@ -61,7 +72,12 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "roman.delangel@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola"
+            gustos= "Hola",
+            materias = listOf(
+                Materias("Programación Móvil", 9.5, 9.2, 2),
+                Materias("Bases de Datos", 8.0, 8.5, 0),
+                Materias("Cálculo Integral", 10.0, 9.8, 1)
+            )
             )
         )
 
@@ -72,7 +88,12 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "benjamin.lobato@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola"
+            gustos= "Hola",
+            materias = listOf(
+                Materias("Programación Móvil", 9.5, 9.2, 2),
+                Materias("Bases de Datos", 8.0, 8.5, 0),
+                Materias("Cálculo Integral", 10.0, 9.8, 1)
+            )
             )
         )
 
@@ -82,7 +103,12 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "omar.novella@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola"
+            gustos= "Hola",
+            materias = listOf(
+                Materias("Programación Móvil", 9.5, 9.2, 2),
+                Materias("Bases de Datos", 8.0, 8.5, 0),
+                Materias("Cálculo Integral", 10.0, 9.8, 1)
+            )
             )
         )
 
