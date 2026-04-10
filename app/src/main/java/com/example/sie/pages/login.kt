@@ -29,14 +29,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.sie.R
 
-@Preview (showBackground = true)
 @Composable
 
-fun Login () {
+fun LoginView (navegar: NavHostController) {
     var nombre by remember { mutableStateOf("") }
     var id by remember { mutableStateOf("") }
+    var MensajError by remember { mutableStateOf("")}
     Column(modifier = Modifier.fillMaxSize().padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Image(painter = painterResource(id = R.drawable.sie), contentDescription = null, modifier = Modifier.size(120.dp))
         Spacer(modifier = Modifier.height(20.dp))
@@ -55,9 +56,34 @@ fun Login () {
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = {}, colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF69340E)), modifier = Modifier.fillMaxWidth().height(50.dp)) {
+        Button(onClick = {
+            MensajError = ""
+            val idInt = id.toIntOrNull()
+
+            if (idInt == null) {
+                MensajError = "Por favor, ingresa un ID numérico válido"
+            } else {
+                try {
+                    val acceso = SieLogic().LoginBy(idInt)
+                    if (acceso) {
+                        val tipoUsuario = SieLogic().UserType(idInt)
+                        if (tipoUsuario == "coordinador"){
+                            navegar.navigate("UserView")
+                        } else if (tipoUsuario == "estudiante") {
+                            navegar.navigate("MateriasView")
+                        }
+                    } else {
+                        MensajError = "ID no reconocido. No tienes acceso."
+                    }
+                } catch (e: Exception) {
+                    MensajError = "Error inesperado: ${e.localizedMessage}"
+                }
+            }
+        }, colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF69340E)), modifier = Modifier.fillMaxWidth().height(50.dp)) {
             Text("Iniciar sesión", fontSize = 20.sp)
         }
+        Text("${MensajError}", fontSize = 20.sp)
+
         Spacer(modifier = Modifier.height(30.dp))
         Image(painter = painterResource(id = R.drawable.iest), contentDescription = null, modifier = Modifier.size(90.dp))
     }
