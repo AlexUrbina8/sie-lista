@@ -2,7 +2,7 @@ package com.example.sie.pages
 
 data class Materias(
     val nombre: String,
-    val calificacciones: Double,
+    val calificaciones: Double,
     val promedio: Double,
     val faltas: Int
 )

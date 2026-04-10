@@ -41,7 +41,7 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "luis.urbina@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola",
+            gustos= "Desarrollo de videojuegos y Piano",
             materias = listOf(
                 Materias("Programación Móvil", 9.5, 9.2, 2),
                 Materias("Bases de Datos", 8.0, 8.5, 0),
@@ -56,11 +56,11 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "juan.seidller@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola",
+            gustos= "Programacion",
             materias = listOf(
-                Materias("Programación Móvil", 9.5, 9.2, 2),
-                Materias("Bases de Datos", 8.0, 8.5, 0),
-                Materias("Cálculo Integral", 10.0, 9.8, 1)
+                Materias("Análisis de Datos", 9.0, 8.8, 1),
+                Materias("Estructura de Datos", 7.5, 8.0, 4),
+                Materias("Contabilidad", 10.0, 9.5, 0)
             )
 
             )
@@ -72,7 +72,7 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "roman.delangel@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola",
+            gustos= "Ver series de Sci-Fi y Gimnasio",
             materias = listOf(
                 Materias("Programación Móvil", 9.5, 9.2, 2),
                 Materias("Bases de Datos", 8.0, 8.5, 0),
@@ -88,7 +88,7 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "benjamin.lobato@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola",
+            gustos= "Aprender idiomas y Programar en Python",
             materias = listOf(
                 Materias("Programación Móvil", 9.5, 9.2, 2),
                 Materias("Bases de Datos", 8.0, 8.5, 0),
@@ -103,7 +103,7 @@ class SieLogic {
             nivel = "estudiante",
             Correo= "omar.novella@iest.edu.mx",
             carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-            gustos= "Hola",
+            gustos= "Escuchar Podcasts y Tocar Guitarra",
             materias = listOf(
                 Materias("Programación Móvil", 9.5, 9.2, 2),
                 Materias("Bases de Datos", 8.0, 8.5, 0),
@@ -113,16 +113,15 @@ class SieLogic {
         )
 
 
-
-//        userLista.add(Usuarios(
-//            ID= 6,
-//            Nombre= "Alexandro Barron Guajardo",
-//            nivel = "coordinador",
-//            Correo= "alex.barron@iest.edu.mx",
-//            carrera= "Licenciatura en Ingenieria en Sistemas y Negocios Digitales (Plan 2022)",
-//            gustos= "Hola"
-//        )
-        //)
+        userLista.add(Usuarios(
+            ID = 6,
+            Nombre = "Alexandro Barron Guajardo",
+            nivel = "coordinador",
+            Correo = "alex.barron@iest.edu.mx",
+            carrera = "Sistemas",
+            gustos = "Tecnología",
+            materias = emptyList()
+        ))
 
         return userLista
 

@@ -13,6 +13,7 @@ fun NavManagerSie(){
     val ListaUsarios = remember { SieLogic().UserGenerator() }
     val AlumnoSeleccionado = remember { mutableStateOf(0) }
 
+
     NavHost(navController, startDestination = "Login"){
         composable("Login"){
             LoginView(navController)
