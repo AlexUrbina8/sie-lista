@@ -1,5 +1,6 @@
 package com.example.sie.pages
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,27 +14,42 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.compose.foundation.lazy.items
 
 
 @Composable
-fun MateriasViwe (navegar: NavHostController) {
+fun MateriasView (navegar: NavHostController,  ListaAlumnos: List<Usuarios>, AlumnoSeleccionado: Int ) {
+    val alumno = ListaAlumnos.find { it.ID == AlumnoSeleccionado }
+
     Column(modifier = Modifier.fillMaxWidth()) {
-        LazyColumn() {
+        LazyColumn(modifier = Modifier.weight(1f)) {
             item {
-                Card(
-                    modifier = Modifier.fillMaxWidth().padding(8.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    elevation = CardDefaults.cardElevation(4.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White)
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text("MateriasCursadas", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                Text(
+                    text = "Bienvenido, ${alumno?.Nombre ?: "Usuario"}",
+                    modifier = Modifier.padding(16.dp),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
+            if (alumno != null) {
+                items(alumno.materias) { materia ->
+                    Card(
+                        modifier = Modifier.fillMaxWidth().padding(8.dp).clickable{
+                            navegar.navigate("MisMaterias")
+                        },
+                        elevation = CardDefaults.cardElevation(4.dp)
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Text(materia.nombre, fontWeight = FontWeight.Bold)
+                        }
                     }
                 }
             }
@@ -41,10 +57,9 @@ fun MateriasViwe (navegar: NavHostController) {
             item {
                 Button(
                     onClick = { navegar.navigate("Login") },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF69340E)),
-                    modifier = Modifier.fillMaxWidth().height(50.dp)
+                    modifier = Modifier.fillMaxWidth().padding(16.dp)
                 ) {
-                    Text("Cerrar Sesion", fontSize = 20.sp)
+                    Text("Cerrar Sesión")
                 }
             }
         }

@@ -16,6 +16,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,7 +35,7 @@ import com.example.sie.R
 
 @Composable
 
-fun LoginView (navegar: NavHostController) {
+fun LoginView (navegar: NavHostController,AlumnoSeleccionado: MutableState<Int>) {
     var nombre by remember { mutableStateOf("") }
     var id by remember { mutableStateOf("") }
     var MensajError by remember { mutableStateOf("")}
@@ -61,22 +62,22 @@ fun LoginView (navegar: NavHostController) {
             val idInt = id.toIntOrNull()
 
             if (idInt == null) {
-                MensajError = "Por favor, ingresa un ID numérico válido"
+                MensajError = "Escribe un número"
             } else {
-                try {
-                    val acceso = SieLogic().LoginBy(idInt)
-                    if (acceso) {
-                        val tipoUsuario = SieLogic().UserType(idInt)
-                        if (tipoUsuario == "coordinador"){
-                            navegar.navigate("UserView")
-                        } else if (tipoUsuario == "estudiante") {
-                            navegar.navigate("MateriasView")
-                        }
+                val miLogica = SieLogic()
+
+                val usuario = miLogica.LoginBy(idInt)
+
+
+                if (usuario != null) {
+                    if (usuario.nivel == "coordinador") {
+                        navegar.navigate("UserView")
                     } else {
-                        MensajError = "ID no reconocido. No tienes acceso."
+                        AlumnoSeleccionado.value = usuario.ID
+                        navegar.navigate("MateriasView")
                     }
-                } catch (e: Exception) {
-                    MensajError = "Error inesperado: ${e.localizedMessage}"
+                } else {
+                    MensajError = "ID no registrado"
                 }
             }
         }, colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF69340E)), modifier = Modifier.fillMaxWidth().height(50.dp)) {

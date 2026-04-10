@@ -4,25 +4,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.R
 
 class SieLogic {
-
-    fun LoginBy(id: Int): Boolean{
-        return when(id){
-            in 1..11 -> true
-            in 12 .. 20049 -> false
-            in 20050..20200 -> true
-            else -> false
+    val usuariosRegistrados = UserGenerator()
+    fun LoginBy(idRecibido: Int): Usuarios? {
+        for (usuarios in usuariosRegistrados) {
+            if (usuarios.ID == idRecibido) {
+                return usuarios
+            }
         }
+        return null
     }
-
-    fun UserType(id: Int): String{
-        return when(id){
-            in 1..11 -> "coordinador"
-            in 12 .. 20049 -> ""
-            in 20050..20200 -> "estudiante"
-            else -> ""
-        }
-    }
-
     fun ChooseCOlor(id: Int): Color{
         return if (id % 2 == 0){
             Color(0xFF7EC1F5)
@@ -118,7 +108,7 @@ class SieLogic {
             Nombre = "Alexandro Barron Guajardo",
             nivel = "coordinador",
             Correo = "alex.barron@iest.edu.mx",
-            carrera = "Sistemas",
+            carrera = "Coordinador de Sistemas",
             gustos = "Tecnología",
             materias = emptyList()
         ))
