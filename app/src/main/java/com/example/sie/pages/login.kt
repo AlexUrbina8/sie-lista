@@ -69,6 +69,7 @@ fun LoginView (navegar: NavHostController,AlumnoSeleccionado: MutableState<Int>)
                 val usuario = miLogica.LoginBy(idInt)
 
 
+
                 if (usuario != null) {
                     if (usuario.nivel == "coordinador") {
                         navegar.navigate("UserView")
