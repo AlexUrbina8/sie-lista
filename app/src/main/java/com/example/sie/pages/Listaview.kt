@@ -1,5 +1,6 @@
 package com.example.sie.pages
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,9 +25,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.MutableState
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.core.R
 
 @Composable
-fun UserView(navegar: NavHostController, ListaAlumnos: List<Usuarios>) {
+fun UserView(navegar: NavHostController, ListaAlumnos: List<Usuarios>, AlumnoSeleccionado: MutableState<Int> ) {
     Column(modifier = Modifier.fillMaxSize().background(Color(0xFFF5F5F5))) {
         LazyColumn(
             modifier = Modifier.weight(1f).padding(10.dp),
@@ -37,6 +43,7 @@ fun UserView(navegar: NavHostController, ListaAlumnos: List<Usuarios>) {
                 Card(
                     modifier = Modifier.fillMaxWidth()
                         .clickable{
+                            AlumnoSeleccionado.value = alumno.ID
                             navegar.navigate("studentInfo")
 
                     }
@@ -46,6 +53,15 @@ fun UserView(navegar: NavHostController, ListaAlumnos: List<Usuarios>) {
                     colors = CardDefaults.cardColors(containerColor = backgroundColor)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
+                        Image(
+                            painter = painterResource(id = com.example.sie.R.drawable.birrete),
+                            contentDescription = "Imagen Alumno",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(200.dp)
+                                .clip(RoundedCornerShape(16.dp)),
+                            contentScale = ContentScale.Crop
+                        )
                         Text(text = alumno.Nombre, fontWeight = FontWeight.Bold, fontSize = 18.sp)
                         Text(text = "ID: ${alumno.ID}", fontSize = 12.sp, color = Color.Gray)
                         Spacer(modifier = Modifier.height(8.dp))

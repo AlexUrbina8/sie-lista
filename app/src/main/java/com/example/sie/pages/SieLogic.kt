@@ -1,6 +1,7 @@
 package com.example.sie.pages
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.R
 
 class SieLogic {
 

@@ -1,6 +1,7 @@
 package com.example.sie.pages
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,7 +21,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun StudentInfoView (navegar: NavHostController) {
+fun StudentInfoView (navegar: NavHostController, listaAlumnos: List<Usuarios>,idSeleccionado: Int) {
+    val alumno = listaAlumnos.find { it.ID == idSeleccionado }
     Column(modifier = Modifier.fillMaxWidth()) {
         LazyColumn() {
             item {
@@ -31,7 +33,15 @@ fun StudentInfoView (navegar: NavHostController) {
                     colors = CardDefaults.cardColors(containerColor = Color.White)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text("Informacion del ALumno", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                        if (alumno != null) {
+                            Text("Información de: ${alumno.Nombre}", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text("Carrera: ${alumno.carrera}")
+                            Text("Correo: ${alumno.Correo}")
+                            Text("Pasatiempo: ${alumno.gustos}")
+                        } else {
+                            Text("Alumno no encontrado")
+                        }
                     }
                 }
             }

@@ -6,5 +6,6 @@ data class Usuarios(
     val Nombre: String,
     val Correo: String,
     val carrera: String,
-    val gustos: String
+    val gustos: String,
+//    val materias: List<>
 )
