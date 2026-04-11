@@ -1,4 +1,4 @@
-package com.example.sie.pages
+package com.example.sie.pages.coord
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,7 +29,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.core.R
+import com.example.sie.classess.SieLogic
+import com.example.sie.classess.Usuarios
 
 @Composable
 fun UserView(navegar: NavHostController, ListaAlumnos: List<Usuarios>, AlumnoSeleccionado: MutableState<Int> ) {

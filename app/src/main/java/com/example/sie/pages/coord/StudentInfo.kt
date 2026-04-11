@@ -1,4 +1,4 @@
-package com.example.sie.pages
+package com.example.sie.pages.coord
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.lazy.items
+import com.example.sie.classess.Usuarios
 
 @Composable
 fun StudentInfoView(navegar: NavHostController, listaAlumnos: List<Usuarios>, idSeleccionado: Int) {
@@ -91,7 +92,7 @@ fun StudentInfoView(navegar: NavHostController, listaAlumnos: List<Usuarios>, id
 
             item {
                 Button(
-                    onClick = { navegar.navigate("UserView") },
+                    onClick = { navegar.navigate("ListaView") },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF69340E)),
                     modifier = Modifier.fillMaxWidth().padding(16.dp).height(50.dp)
                 ) {

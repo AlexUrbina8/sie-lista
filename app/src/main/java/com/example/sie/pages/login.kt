@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.sie.R
+import com.example.sie.classess.SieLogic
 
 @Composable
 
@@ -72,7 +73,7 @@ fun LoginView (navegar: NavHostController,AlumnoSeleccionado: MutableState<Int>)
 
                 if (usuario != null) {
                     if (usuario.nivel == "coordinador") {
-                        navegar.navigate("UserView")
+                        navegar.navigate("ListaView")
                     } else {
                         AlumnoSeleccionado.value = usuario.ID
                         navegar.navigate("MateriasView")
